@@ -142,7 +142,7 @@ export const App = {
     this._idx = null;
     this.isolate = null;
     this.sel = (r.sel || []).map(id => this.find(id)).filter(Boolean);
-    this.doc._dirty = true;
+    this.doc._dirty = true; this.doc.modified = Date.now();
     this.render(); this.emit('sel'); this.emit('change', 'history'); this.emit('page');
   },
 

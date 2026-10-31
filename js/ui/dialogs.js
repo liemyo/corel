@@ -175,7 +175,7 @@ const DLG = {
         const s = App.doc.snap;
         pane.append(check('Kunci ke objek (node, sudut, pusat, titik tengah)', () => s.objects, v => { s.objects = v; V.invalidateSnap(); }), check('Kunci ke garis bantu', () => s.guides, v => { s.guides = v; V.invalidateSnap(); }), check('Kunci ke halaman', () => s.page, v => { s.page = v; V.invalidateSnap(); }), check('Garis bantu penjajaran dinamis', () => s.dyn, v => { s.dyn = v; V.invalidateSnap(); }), h('p', { class: 'small muted' }, 'Tahan Alt saat menyeret untuk sementara mematikan penguncian.'));
       }
-      if (k === 'save') pane.append(check('Simpan otomatis ke peramban setiap 30 detik', () => App.settings.autosave, v => set('autosave', v)),
+      if (k === 'save') pane.append(check('Simpan otomatis ke peramban setiap ada perubahan', () => App.settings.autosave, v => set('autosave', v)),
         h('p', { class: 'small muted' }, 'Salinan otomatis tersimpan di peramban ini (IndexedDB) dan muncul di Layar Sambutan › Terbaru.'),
         h('button', { class: 'btn btn-ghost', onclick: async () => { const l = await Store.list(); for (const r of l) await Store.del(r.id); toast('Daftar terbaru dikosongkan'); } }, 'Kosongkan dokumen terbaru'));
     };

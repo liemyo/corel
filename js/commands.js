@@ -324,7 +324,12 @@ export function bindKeys() {
   });
   addEventListener('keydown', e => { if (e.key === ' ') V.spaceDown = false; });
   addEventListener('copy', e => { if (/^(INPUT|TEXTAREA)$/.test(e.target.tagName) || e.target.isContentEditable) return; });
-  setInterval(() => { for (const d of App.docs) if (d._dirty && d._as !== d.modified) { d._as = d.modified; autosave(d); } }, 30000);
+  // Every change is written to the browser store ~1.5 s after editing stops (plus a 10 s safety net).
+  const autosaveAll = () => { for (const d of App.docs) if (d._dirty && d._as !== d.modified) { d._as = d.modified; autosave(d); } };
+  let asT = 0;
+  App.on('change', () => { clearTimeout(asT); asT = setTimeout(autosaveAll, 1500); });
+  setInterval(autosaveAll, 10000);
+  addEventListener('pagehide', () => { for (const d of App.docs) if (d._dirty) autosave(d); });
   document.addEventListener('visibilitychange', () => { if (document.hidden) for (const d of App.docs) if (d._dirty) autosave(d); });
 }
 export { envInit, S, cloneObj, newLayer };
