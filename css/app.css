@@ -80,7 +80,7 @@ kbd { font: 600 10.5px/1 var(--ui); padding: 3px 6px; border-radius: 5px; backgr
 
 /* ---------- Background ---------- */
 .aurora { position: fixed; inset: 0; overflow: hidden; z-index: 0; background: var(--bg0); }
-.aurora i { position: absolute; width: 72vmax; height: 72vmax; border-radius: 50%; opacity: .55; filter: blur(30px); animation: drift 60s ease-in-out infinite alternate; }
+.aurora i { position: absolute; width: 72vmax; height: 72vmax; border-radius: 50%; opacity: .55; filter: blur(30px); animation: none; }
 .aurora i:nth-child(1) { background: radial-gradient(closest-side, var(--a1), transparent); left: -22vmax; top: -30vmax; }
 .aurora i:nth-child(2) { background: radial-gradient(closest-side, var(--a2), transparent); right: -26vmax; top: -20vmax; animation-duration: 72s; animation-delay: -14s; }
 .aurora i:nth-child(3) { background: radial-gradient(closest-side, var(--a3), transparent); left: 8vmax; bottom: -44vmax; animation-duration: 80s; animation-delay: -30s; }
@@ -103,7 +103,7 @@ html[data-liquid="1"] .glass::before, html[data-liquid="1"] .glass-strong::befor
   opacity: .5;
 }
 html[data-mode="light"][data-liquid="1"] .glass::before { opacity: .9; }
-html.can-refract .refract { -webkit-backdrop-filter: blur(var(--blur)) saturate(var(--sat)); backdrop-filter: url(#lg-refract) blur(var(--blur)) saturate(var(--sat)); }
+html.can-refract .refract { -webkit-backdrop-filter: blur(var(--blur)) saturate(var(--sat)); backdrop-filter: blur(var(--blur)) saturate(var(--sat)); }
 html[data-glass="frost"] { --blur: 38px; --sat: 130%; }
 html[data-glass="solid"] .glass, html[data-glass="solid"] .glass-strong { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--panel-solid); }
 html[data-liquid="0"] .glass { box-shadow: none; }
