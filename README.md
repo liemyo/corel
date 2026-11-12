@@ -18,6 +18,7 @@ paper.js (boolean), Clipper (offset), opentype.js (teks → kurva), jsPDF + svg2
 | `js/ops.js` | Las/Pangkas/Irisan/Sederhanakan, kombinasi, grup, urutan, rata & distribusi, PowerClip, konversi |
 | `js/tools/*` | Alat Pilih, Bentuk, kuas deformasi, potong/pisau/penghapus, alat gambar, teks, alat efek interaktif |
 | `js/ui/*` | menu, toolbar, bilah properti kontekstual, docker, dialog, layar sambutan, tema liquid glass |
+| `js/trace/*`, `js/ui/autotrace.js` | Trace Otomatis: gambar → garis vektor halus & presisi (tepi sub-piksel, latar & bayangan dibuang, kurva Bézier, isian warna opsional) — Bitmap › Trace Otomatis, Berkas › Impor gambar & Trace Otomatis |
 | `js/io.js` | `.adraw`, impor SVG/gambar, ekspor SVG/PNG/JPG/WebP/PDF, cetak, simpan otomatis, PowerTRACE |
 
 ## Deploy

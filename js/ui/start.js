@@ -92,6 +92,7 @@ const LEARN = [
   ['Pembentukan', 'Las, Pangkas, Irisan, Sederhanakan — pilih dua objek atau lebih, lalu gunakan bilah properti.', 'weld', ''],
   ['PowerClip', 'Masukkan gambar atau objek ke dalam bentuk apa pun: Objek › PowerClip › Tempatkan di dalam bingkai.', 'powerclip', ''],
   ['Campuran & kontur', 'Seret dari satu objek ke objek lain dengan Alat Campuran. Kontur membuat cincin konsentris.', 'blend', ''],
+  ['Trace Otomatis', 'Unggah foto atau sketsa (mis. kursi) → garis vektor halus & presisi mengikuti objek: Bitmap › Trace Otomatis.', 'trace', ''],
   ['PowerTRACE', 'Ubah logo atau foto menjadi vektor: pilih bitmap lalu Bitmap › Trace bitmap.', 'trace', ''],
   ['Palet warna', 'Klik warna untuk isian, klik kanan untuk kerangka, ⌘/Ctrl+klik untuk mencampur.', 'palette', ''],
   ['Kunci ke objek', 'Garis bantu penjajaran dinamis muncul otomatis saat menyeret. Tahan Alt untuk mematikannya sementara.', 'magnet', 'Alt+Z'],

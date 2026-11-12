@@ -24,13 +24,13 @@ const sub = (l, ids, i) => ({ l, i, sub: () => ids.map(M) });
 
 // ---------- Menus ----------
 export const MENUS = [
-  ['Berkas', () => [M('new'), M('newTpl'), M('open'), { l: 'Buka terbaru', i: 'clock', sub: recentMenu }, '-', M('save'), M('saveAs'), M('revert'), '-', M('import'), M('export'), M('exportPDF'), M('exportWeb'), '-', M('print'), '-', M('docProps'), M('start'), '-', M('close'), M('closeAll')]],
+  ['Berkas', () => [M('new'), M('newTpl'), M('open'), { l: 'Buka terbaru', i: 'clock', sub: recentMenu }, '-', M('save'), M('saveAs'), M('revert'), '-', M('import'), M('importTrace'), M('export'), M('exportPDF'), M('exportWeb'), '-', M('print'), '-', M('docProps'), M('start'), '-', M('close'), M('closeAll')]],
   ['Edit', () => [M('undo'), M('redo'), M('historyDock'), '-', M('cut'), M('copy'), M('paste'), M('pasteInPlace'), M('delete'), '-', M('duplicate'), M('clone'), M('stepRepeat'), M('copyProps'), '-', sub('Pilih semua', ['selectAll', 'selectText', 'selectGuides']), '-', M('find'), M('insertChar')]],
   ['Tampilan', () => [M('wire'), '-', M('rulers'), M('grid'), M('guides'), M('bleed'), '-', sub('Kunci ke', ['snapObjects', 'snapGrid', 'snapGuides', 'snapPage', 'dynGuides', '-', 'snapOff'], 'magnet'), '-', M('zoomIn'), M('zoomOut'), M('zoom100'), M('zoomPage'), M('zoomWidth'), M('zoomAll'), M('zoomSel'), '-', M('full')]],
   ['Tata Letak', () => [M('pageAdd'), M('pageDup'), M('pageRename'), M('pageDel'), '-', M('pageNext'), M('pagePrev'), '-', M('pageSetup'), M('pageBg'), M('pageOrient'), '-', M('guideSetup'), M('guidesMargin'), M('guidesCenter'), M('guidesClear'), M('gridSetup')]],
   ['Objek', () => [M('insertQR'), M('insertBarcode'), '-', sub('Transformasi', ['transform', 'mirrorH', 'mirrorV', 'rot90', 'rot90r', 'clearXform'], 'xform'), sub('Rata dan distribusi', ['alignL', 'alignR', 'alignT', 'alignB', 'alignHC', 'alignVC', 'centerPage', '-', 'distH', 'distV', 'distSH', 'distSV', '-', 'alignDock'], 'aleft'), sub('Urutan', ['toFront', 'toBack', 'forward', 'backward', 'inFront', 'behind', 'reverseOrder'], 'tofront'), '-', M('group'), M('ungroup'), M('ungroupAll'), '-', M('combine'), M('breakApart'), '-', sub('Pembentukan', ['weld', 'trim', 'intersect', 'simplify', 'fmb', 'bmf', 'boundary', '-', 'shapingDock'], 'weld'), sub('PowerClip', ['pcInside', 'pcEdit', 'pcExtract'], 'powerclip'), '-', M('toCurves'), M('outlineToObj'), M('closePath'), '-', M('lock'), M('unlock'), M('unlockAll'), '-', M('objects'), M('props')]],
   ['Efek', () => [M('adjustDock'), M('contourDock'), M('blendDock'), M('lensDock'), '-', M('envelope'), M('clearEnv'), M('addPersp'), M('clearPersp'), M('distort'), '-', M('dropShadow'), M('innerGlow'), M('extrude'), M('blockShadow'), M('contour'), M('blend'), '-', M('separate'), M('copyFx'), M('clearFx')]],
-  ['Bitmap', () => [M('toBitmap'), '-', M('trace'), M('quickTrace'), '-', M('bitmapFx'), M('resample')]],
+  ['Bitmap', () => [M('autoTrace'), '-', M('toBitmap'), '-', M('trace'), M('quickTrace'), '-', M('bitmapFx'), M('resample')]],
   ['Teks', () => [M('textProps'), '-', M('fitPath'), M('straighten'), '-', M('toPara'), M('toArt'), '-', sub('Ubah huruf', ['caseUp', 'caseLow', 'caseTitle', 'caseNone']), '-', M('insertChar'), M('find'), M('lorem')]],
   ['Tabel', () => [M('tableNew'), '-', M('tableRowAdd'), M('tableColAdd'), M('tableRowDel'), M('tableColDel'), M('tableHeader'), '-', M('tableToGroup')]],
   ['Alat', () => [M('options'), M('shortcuts'), '-', M('colorDock'), M('palettes'), '-', M('objects'), M('historyDock'), '-', M('themes')]],
@@ -334,7 +334,7 @@ App.ui.contextMenu = e => {
     App.sel.some(o => o.type === 'g') ? M('ungroup') : M('group'), App.sel.length > 1 ? M('combine') : M('breakApart'), M('toCurves'), '-',
     sub('Urutan', ['toFront', 'toBack', 'forward', 'backward', 'inFront', 'behind'], 'tofront'), sub('Rata', ['alignL', 'alignHC', 'alignR', 'alignT', 'alignVC', 'alignB', 'centerPage'], 'aleft'),
     App.sel.length > 1 ? sub('Pembentukan', ['weld', 'trim', 'intersect', 'simplify', 'fmb', 'bmf', 'boundary'], 'weld') : null,
-    sub('PowerClip', ['pcInside', 'pcEdit', 'pcExtract'], 'powerclip'), App.sel[0]?.type === 'img' ? M('trace') : null, App.sel[0]?.type === 'text' ? M('fitPath') : null, '-',
+    sub('PowerClip', ['pcInside', 'pcEdit', 'pcExtract'], 'powerclip'), App.sel[0]?.type === 'img' ? M('autoTrace') : null, App.sel[0]?.type === 'img' ? M('trace') : null, App.sel[0]?.type === 'text' ? M('fitPath') : null, '-',
     App.sel.every(o => o.lock) ? M('unlock') : M('lock'), M('props'),
   ] : [M('paste'), M('selectAll'), '-', M('zoomPage'), M('zoomAll'), '-', M('pageSetup'), M('pageBg'), M('guidesMargin'), '-', M('grid'), M('rulers')];
   void has;

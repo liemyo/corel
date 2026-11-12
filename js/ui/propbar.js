@@ -136,7 +136,7 @@ const CTX = {
   },
   img() {
     const o = S1();
-    return [...posSize(), ib('trace', 'Trace bitmap (PowerTRACE)…', () => run('trace')), ddButton('Trace', () => ['quickTrace', 'trace'].map(id => ({ l: C[id].l, run: () => run(id) })), { title: 'Trace bitmap' }), sep(), ib('image', 'Penyesuaian & efek bitmap…', () => run('bitmapFx')), ib('powerclip', 'PowerClip ke bingkai…', () => run('pcInside')), sep(),
+    return [...posSize(), ib('trace', 'Trace Otomatis — garis presisi…', () => run('autoTrace')), ddButton('Trace', () => ['autoTrace', 'quickTrace', 'trace'].map(id => ({ l: C[id].l, run: () => run(id) })), { title: 'Trace bitmap' }), sep(), ib('image', 'Penyesuaian & efek bitmap…', () => run('bitmapFx')), ib('powerclip', 'PowerClip ke bingkai…', () => run('pcInside')), sep(),
       h('span', { class: 'plbl' }, o?.px ? `${o.px[0]} × ${o.px[1]} px · ${Math.round(o.px[0] / ((objBox(o)?.w || 1) / 25.4))} dpi` : 'Bitmap'), sep(), ...groupBtns(), ...orderBtns()];
   },
   blend() {

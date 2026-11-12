@@ -169,6 +169,8 @@ export const C = {
   // ----- Bitmaps
   toBitmap: { l: 'Konversi ke bitmap…', i: 'bitmap', en: has(1), run: () => ui('tobitmap') },
   trace: { l: 'Trace bitmap (PowerTRACE)…', i: 'trace', en: () => one() && sel()[0].type === 'img', run: () => ui('trace') },
+  autoTrace: { l: 'Trace Otomatis (garis presisi)…', i: 'trace', run: () => import('./ui/autotrace.js').then(m => m.openAutoTrace({ obj: one() && sel()[0].type === 'img' ? sel()[0] : null })) },
+  importTrace: { l: 'Impor gambar & Trace Otomatis…', i: 'import', run: () => import('./ui/autotrace.js').then(m => m.openAutoTrace({ pick: true })) },
   quickTrace: { l: 'Trace cepat', en: () => one() && sel()[0].type === 'img', run: async () => { const { traceBitmap } = await import('./io.js'); const n = await traceBitmap(sel()[0], 'clip', { keep: false }); toast(`Trace selesai: ${n} objek`); } },
   bitmapFx: { l: 'Penyesuaian & efek bitmap…', i: 'image', en: () => one() && sel()[0].type === 'img', run: () => ui('bitmapfx') },
   resample: { l: 'Ubah resolusi…', en: () => one() && sel()[0].type === 'img', run: () => ui('bitmapfx', 'resample') },
