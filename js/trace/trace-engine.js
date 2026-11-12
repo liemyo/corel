@@ -816,8 +816,9 @@ export class Tracer {
         if (0.2126 * rgb[i3] + 0.7152 * rgb[i3 + 1] + 0.0722 * rgb[i3 + 2] < 70) dark++;
       }
       const fFlat = flat0 / Math.max(1, nb), fZ2 = z2 / Math.max(1, nb), fDark = dark / Math.max(1, nb);
-      const lineart = !alphaMask && fPaper > 0.45 && fInk > 0.002 && fInk < 0.3 && halfW < 3.2 * this.k && fShade < fInk * 2.2 + 0.03 && cInk < 22;
-      return { lineart, art: !lineart && fFlat >= 0.66 && fZ2 >= 0.6 && fDark >= 0.04, fFlat, fZ2, fDark, fPaper, fInk, fShade, halfW, cInk, tInk };
+      const art = fFlat >= 0.66 && fZ2 >= 0.6 && fDark >= 0.04;
+      const lineart = !art && !alphaMask && fPaper > 0.45 && fInk > 0.002 && fInk < 0.3 && halfW < Math.max(3.2 * this.k, 0.0045 * this.D) && fShade < fInk * 2.2 + 0.03 && cInk < 22;
+      return { lineart, art, fFlat, fZ2, fDark, fPaper, fInk, fShade, halfW, cInk, tInk };
     });
   }
   smoothed(detail) {
